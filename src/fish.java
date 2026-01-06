@@ -1,6 +1,5 @@
-import java.awt.*;
-
-public class Whaler {
+public class fish {  //VARIABLE DECLARATION SECTION
+    //Here's where you state which variables you are going to use.
     public String name;                //holds the name of the hero
     public int xpos;                //the x position
     public int ypos;                //the y position
@@ -8,9 +7,7 @@ public class Whaler {
     public int dy;                    //the speed of the hero in the y direction
     public int width;
     public int height;
-    public boolean isAlive;
-    public Rectangle hitbox;
-    //a boolean to denote if the hero is alive or dead.
+    public boolean isAlive;            //a boolean to denote if the hero is alive or dead.
 
 
     // METHOD DEFINITION SECTION
@@ -21,12 +18,12 @@ public class Whaler {
 
     //This is a SECOND constructor that takes 3 parameters.  This allows us to specify the hero's name and position when we build it.
     // if you put in a String, an int and an int the program will use this constructor instead of the one above.
-    public Whaler(int pXpos, int pYpos) {
+    public fish(int pXpos, int pYpos) {
         xpos = pXpos;
         ypos = pYpos;
-        dx =1;
-        dy =6;
-        width = 150;
+        dx =4;
+        dy =3;
+        width = 100;
         height = 100;
         isAlive = true;
 
@@ -34,25 +31,30 @@ public class Whaler {
 
     //The move method.  Everytime this is run (or "called") the hero's x position and y position change by dx and dy
     public void move() {
+        if (xpos>=1000-width) {//the right wall
+            dx=-dx;
 
-        if (xpos>=950){
-            xpos=2;
 
-        }
-        if (xpos<=0){
-            xpos=950;
-        }
-        if (ypos>=650){
-            ypos=1;
 
         }
-        if (ypos<=0){
-            ypos=650;
+        if (xpos<=0) {//the left wall
+            dx=-dx;
+
+
         }
-        xpos=xpos+dx;
-        hitbox= new Rectangle(xpos,ypos,width,height)
+        if (ypos>=700-height) {//the bottom wall
+            dy=-dy;
+
+
+        }
+        if (ypos<=0) {//the top wall
+            dy=-dy;
+
+
+        }
+
+        xpos = xpos + dx;
         ypos = ypos + dy;
-
 
     }
 }

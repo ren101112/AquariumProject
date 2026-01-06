@@ -40,11 +40,14 @@ public class BasicGameApp implements Runnable {
 	public BufferStrategy bufferStrategy;
 	public Image whalePic;
     public Image whalersPic;
+    public Image fishPic;
+    public Image background;
 
    //Declare the objects used in the program
    //These are things that are made up of more than one variable type
 	private Whale bubba;
     private Whaler whaleTeam;
+    private fish goldfish;
 
 
    // Main method definition
@@ -64,11 +67,14 @@ public class BasicGameApp implements Runnable {
       setUpGraphics();
        
       //variable and objects
-      //create (construct) the objects needed for the game and load up 
+      //create (construct) the objects needed for the game and load up
+        background=Toolkit.getDefaultToolkit().getImage("northsea.jpg");
 		whalePic = Toolkit.getDefaultToolkit().getImage("whale.png"); //load the picture
 		bubba = new Whale(10,100);
         whalersPic=Toolkit.getDefaultToolkit().getImage("whalers.png");
         whaleTeam=new Whaler(31,45);
+        fishPic=Toolkit.getDefaultToolkit().getImage("fish.jpeg");
+        goldfish=new fish(132,45);
 
 
 	}// BasicGameApp()
@@ -98,6 +104,7 @@ public class BasicGameApp implements Runnable {
       //calls the move( ) code in the objects
 		bubba.move();
         whaleTeam.move();
+        goldfish.move();
 
 	}
 	
@@ -146,10 +153,12 @@ public class BasicGameApp implements Runnable {
 	private void render() {
 		Graphics2D g = (Graphics2D) bufferStrategy.getDrawGraphics();
 		g.clearRect(0, 0, WIDTH, HEIGHT);
+        g.drawImage(background, 0,0, 1000, 700,null);
 
       //draw the image of the astronaut
 		g.drawImage(whalePic, bubba.xpos, bubba.ypos, bubba.width, bubba.height, null);
         g.drawImage(whalersPic,whaleTeam.xpos,whaleTeam.ypos, whaleTeam.width,whaleTeam.height,null);
+        g.drawImage(fishPic, goldfish.xpos, goldfish.ypos, goldfish.width, goldfish.height, null);
 
 		g.dispose();
 
