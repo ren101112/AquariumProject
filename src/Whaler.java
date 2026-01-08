@@ -29,6 +29,7 @@ public class Whaler {
         width = 150;
         height = 100;
         isAlive = true;
+        hitbox=new Rectangle(xpos,ypos,width,height);
 
     } // constructor
 
@@ -50,8 +51,9 @@ public class Whaler {
             ypos=650;
         }
         xpos=xpos+dx;
-        hitbox= new Rectangle(xpos,ypos,width,height)
+        hitbox= new Rectangle(xpos,ypos,width,height);
         ypos = ypos + dy;
+        hitbox= new Rectangle(xpos,ypos,width,height);
 
 
     }

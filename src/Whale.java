@@ -1,3 +1,5 @@
+import java.awt.*;
+
 /**
  * Created by chales on 11/6/2017.
  */
@@ -12,7 +14,9 @@ public class Whale {
     public int dy;                    //the speed of the hero in the y direction
     public int width;
     public int height;
-    public boolean isAlive;            //a boolean to denote if the hero is alive or dead.
+    public boolean isAlive;
+    public Rectangle hitbox2;
+    //a boolean to denote if the hero is alive or dead.
 
 
     // METHOD DEFINITION SECTION
@@ -32,13 +36,39 @@ public class Whale {
         width = 100;
         height = 100;
         isAlive = true;
+        hitbox2=new Rectangle(xpos,ypos,width,height);
  
     } // constructor
 
     //The move method.  Everytime this is run (or "called") the hero's x position and y position change by dx and dy
     public void move() {
+
+        if (xpos>=1000-width) {//the right wall
+            dx=-dx;
+
+
+
+        }
+        if (xpos<=0) {//the left wall
+            dx=-dx;
+
+
+        }
+        if (ypos>=700-height) {//the bottom wall
+            dy=-dy;
+
+
+        }
+        if (ypos<=0) {//the top wall
+            dy=-dy;
+
+
+        }
+
         xpos = xpos + dx;
+        hitbox2=new Rectangle(xpos,ypos,width,height);
         ypos = ypos + dy;
+        hitbox2=new Rectangle(xpos,ypos,width,height);
  
     }
 }

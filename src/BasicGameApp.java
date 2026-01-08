@@ -97,6 +97,27 @@ public class BasicGameApp implements Runnable {
          pause(20); // sleep for 10 ms
 		}
 	}
+    public void interactions(){
+        if(whaleTeam.hitbox.intersects(bubba.hitbox2)&& bubba.isAlive==true){
+            System.out.println("crash!!!!!!!!");
+            whaleTeam.dx=-whaleTeam.dx;
+            bubba.dx=-bubba.dx;
+            whaleTeam.dy=-whaleTeam.dy;
+            bubba.dy=-bubba.dy;
+            bubba.isAlive=false;
+
+
+        }
+
+
+
+
+
+
+
+
+
+    }
 
 
 	public void moveThings()
@@ -105,6 +126,7 @@ public class BasicGameApp implements Runnable {
 		bubba.move();
         whaleTeam.move();
         goldfish.move();
+        interactions();
 
 	}
 	
