@@ -45,9 +45,10 @@ public class BasicGameApp implements Runnable {
 
    //Declare the objects used in the program
    //These are things that are made up of more than one variable type
-	private Whale bubba;
+	private Whale whaled;
     private Whaler whaleTeam;
     private fish goldfish;
+    private squid giantSquid;
 
 
    // Main method definition
@@ -70,7 +71,7 @@ public class BasicGameApp implements Runnable {
       //create (construct) the objects needed for the game and load up
         background=Toolkit.getDefaultToolkit().getImage("northsea.jpg");
 		whalePic = Toolkit.getDefaultToolkit().getImage("whale.png"); //load the picture
-		bubba = new Whale(10,100);
+		whaled = new Whale(699,100);
         whalersPic=Toolkit.getDefaultToolkit().getImage("whalers.png");
         whaleTeam=new Whaler(31,45);
         fishPic=Toolkit.getDefaultToolkit().getImage("fish.jpeg");
@@ -97,15 +98,33 @@ public class BasicGameApp implements Runnable {
          pause(20); // sleep for 10 ms
 		}
 	}
+
+
+
+	public void moveThings()
+	{
+      //calls the move( ) code in the objects
+
+
+        whaled.move();
+        whaleTeam.move();
+        goldfish.move();
+        interactions();
+
+	}
     public void interactions(){
-        if(whaleTeam.hitbox.intersects(bubba.hitbox2)&& bubba.isAlive==true){
+        if(whaleTeam.hitbox.intersects(whaled.hitbox2)){
             System.out.println("crash!!!!!!!!");
             whaleTeam.dx=-whaleTeam.dx;
-            bubba.dx=-bubba.dx;
+            whaled.dx=-whaled.dx;
             whaleTeam.dy=-whaleTeam.dy;
-            bubba.dy=-bubba.dy;
-            bubba.isAlive=false;
+            whaled.dy=-whaled.dy;
+            whaled.isAlive=false;
 
+
+        }
+        if(goldfish.Hitbox3.intersects(whaled.hitbox2)){
+            goldfish.isAlive=false;
 
         }
 
@@ -120,17 +139,7 @@ public class BasicGameApp implements Runnable {
     }
 
 
-	public void moveThings()
-	{
-      //calls the move( ) code in the objects
-		bubba.move();
-        whaleTeam.move();
-        goldfish.move();
-        interactions();
-
-	}
-	
-   //Pauses or sleeps the computer for the amount specified in milliseconds
+    //Pauses or sleeps the computer for the amount specified in milliseconds
    public void pause(int time ){
    		//sleep
 			try {
@@ -178,10 +187,11 @@ public class BasicGameApp implements Runnable {
         g.drawImage(background, 0,0, 1000, 700,null);
 
       //draw the image of the astronaut
-		g.drawImage(whalePic, bubba.xpos, bubba.ypos, bubba.width, bubba.height, null);
+		g.drawImage(whalePic, whaled.xpos, whaled.ypos, whaled.width, whaled.height, null);
         g.drawImage(whalersPic,whaleTeam.xpos,whaleTeam.ypos, whaleTeam.width,whaleTeam.height,null);
-        g.drawImage(fishPic, goldfish.xpos, goldfish.ypos, goldfish.width, goldfish.height, null);
-
+        if(goldfish.isAlive==true) {
+            g.drawImage(fishPic, goldfish.xpos, goldfish.ypos, goldfish.width, goldfish.height, null);
+        }
 		g.dispose();
 
 		bufferStrategy.show();

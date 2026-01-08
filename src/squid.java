@@ -1,7 +1,6 @@
 import java.awt.*;
 
-public class fish {  //VARIABLE DECLARATION SECTION
-    //Here's where you state which variables you are going to use.
+public class squid {
     public String name;                //holds the name of the hero
     public int xpos;                //the x position
     public int ypos;                //the y position
@@ -10,7 +9,7 @@ public class fish {  //VARIABLE DECLARATION SECTION
     public int width;
     public int height;
     public boolean isAlive;
-    public Rectangle Hitbox3;
+    public Rectangle hitbox;
     //a boolean to denote if the hero is alive or dead.
 
 
@@ -22,46 +21,41 @@ public class fish {  //VARIABLE DECLARATION SECTION
 
     //This is a SECOND constructor that takes 3 parameters.  This allows us to specify the hero's name and position when we build it.
     // if you put in a String, an int and an int the program will use this constructor instead of the one above.
-    public fish(int pXpos, int pYpos) {
+    public squid(int pXpos, int pYpos) {
         xpos = pXpos;
         ypos = pYpos;
-        dx =4;
-        dy =3;
-        width = 100;
+        dx =1;
+        dy =6;
+        width = 150;
         height = 100;
         isAlive = true;
-        Hitbox3=new Rectangle(xpos,ypos,width,height);
+        hitbox=new Rectangle(xpos,ypos,width,height);
 
     } // constructor
 
     //The move method.  Everytime this is run (or "called") the hero's x position and y position change by dx and dy
     public void move() {
-        if (xpos>=1000-width) {//the right wall
-            dx=-dx;
 
-
-
-        }
-        if (xpos<=0) {//the left wall
-            dx=-dx;
-
+        if (xpos>=950){
+            xpos=2;
 
         }
-        if (ypos>=700-height) {//the bottom wall
-            dy=-dy;
-
+        if (xpos<=0){
+            xpos=950;
+        }
+        if (ypos>=650){
+            ypos=1;
 
         }
-        if (ypos<=0) {//the top wall
-            dy=-dy;
-
-
+        if (ypos<=0){
+            ypos=650;
         }
-        Hitbox3=new Rectangle(xpos,ypos,width,height);
-
-        xpos = xpos + dx;
-        Hitbox3=new Rectangle(xpos,ypos,width,height);
+        xpos=xpos+dx;
+        hitbox= new Rectangle(xpos,ypos,width,height);
         ypos = ypos + dy;
+        hitbox= new Rectangle(xpos,ypos,width,height);
+
 
     }
+
 }
