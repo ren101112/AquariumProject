@@ -41,6 +41,7 @@ public class BasicGameApp implements Runnable {
 	public Image whalePic;
     public Image whalersPic;
     public Image fishPic;
+    public Image squidPic;
     public Image background;
 
    //Declare the objects used in the program
@@ -76,6 +77,8 @@ public class BasicGameApp implements Runnable {
         whaleTeam=new Whaler(31,45);
         fishPic=Toolkit.getDefaultToolkit().getImage("fish.jpeg");
         goldfish=new fish(132,45);
+        squidPic= Toolkit.getDefaultToolkit().getImage("squid.jpeg");
+        giantSquid =new squid(0,550);
 
 
 	}// BasicGameApp()
@@ -109,6 +112,7 @@ public class BasicGameApp implements Runnable {
         whaled.move();
         whaleTeam.move();
         goldfish.move();
+        giantSquid.move();
         interactions();
 
 	}
@@ -192,6 +196,7 @@ public class BasicGameApp implements Runnable {
         if(goldfish.isAlive==true) {
             g.drawImage(fishPic, goldfish.xpos, goldfish.ypos, goldfish.width, goldfish.height, null);
         }
+        g.drawImage(squidPic,giantSquid.xpos,giantSquid.ypos, giantSquid.width,giantSquid.height,null);
 		g.dispose();
 
 		bufferStrategy.show();

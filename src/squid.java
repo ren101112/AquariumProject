@@ -25,7 +25,7 @@ public class squid {
         xpos = pXpos;
         ypos = pYpos;
         dx =1;
-        dy =6;
+        dy =1/9;
         width = 150;
         height = 100;
         isAlive = true;
@@ -36,23 +36,11 @@ public class squid {
     //The move method.  Everytime this is run (or "called") the hero's x position and y position change by dx and dy
     public void move() {
 
-        if (xpos>=950){
-            xpos=2;
-
-        }
-        if (xpos<=0){
-            xpos=950;
-        }
-        if (ypos>=650){
-            ypos=1;
-
-        }
-        if (ypos<=0){
-            ypos=650;
-        }
+        dy += dy + Math.sin(dx * 0.05) * 0.3;
         xpos=xpos+dx;
         hitbox= new Rectangle(xpos,ypos,width,height);
-        ypos = ypos + dy;
+        ypos = ypos + dy+ (int)(Math.sin(xpos * -0.05) * 5);
+        ;
         hitbox= new Rectangle(xpos,ypos,width,height);
 
 
