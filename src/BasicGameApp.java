@@ -17,6 +17,8 @@ import java.awt.image.BufferStrategy;
 import java.awt.*;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
+import java.awt.Color;
+import java.awt.Font;
 
 
 //*******************************************************************************
@@ -50,6 +52,7 @@ public class BasicGameApp implements Runnable {
     private Whaler whaleTeam;
     private fish goldfish;
     private squid giantSquid;
+    private int whaleHealth = 3;
 
 
    // Main method definition
@@ -123,23 +126,21 @@ public class BasicGameApp implements Runnable {
             whaled.dx=-whaled.dx;
             whaleTeam.dy=-whaleTeam.dy;
             whaled.dy=-whaled.dy;
-            whaled.isAlive=false;
 
+            // Decrease whale health instead of instant death
+            whaleHealth=whaleHealth-1;
+            System.out.println("Whale hit!!!!:( Health remaining: " + whaleHealth);
 
+            // Check if whale is dead
+            if(whaleHealth == 0){
+                whaled.isAlive=false;
+                System.out.println("Whale has died!");
+            }
         }
+
         if(goldfish.Hitbox3.intersects(whaled.hitbox2)){
             goldfish.isAlive=false;
-
         }
-
-
-
-
-
-
-
-
-
     }
 
 
@@ -185,20 +186,30 @@ public class BasicGameApp implements Runnable {
 
 
 	//paints things on the screen using bufferStrategy
-	private void render() {
-		Graphics2D g = (Graphics2D) bufferStrategy.getDrawGraphics();
-		g.clearRect(0, 0, WIDTH, HEIGHT);
+    private void render() {
+        Graphics2D g = (Graphics2D) bufferStrategy.getDrawGraphics();
+        g.clearRect(0, 0, WIDTH, HEIGHT);
         g.drawImage(background, 0,0, 1000, 700,null);
 
-      //draw the image of the astronaut
-		g.drawImage(whalePic, whaled.xpos, whaled.ypos, whaled.width, whaled.height, null);
+        // Draw the whale (only if alive)
+        if(whaled.isAlive) {
+            g.drawImage(whalePic, whaled.xpos, whaled.ypos, whaled.width, whaled.height, null);
+        }
+
         g.drawImage(whalersPic,whaleTeam.xpos,whaleTeam.ypos, whaleTeam.width,whaleTeam.height,null);
+
         if(goldfish.isAlive==true) {
             g.drawImage(fishPic, goldfish.xpos, goldfish.ypos, goldfish.width, goldfish.height, null);
         }
-        g.drawImage(squidPic,giantSquid.xpos,giantSquid.ypos, giantSquid.width,giantSquid.height,null);
-		g.dispose();
 
-		bufferStrategy.show();
-	}
+        g.drawImage(squidPic,giantSquid.xpos,giantSquid.ypos, giantSquid.width,giantSquid.height,null);
+
+        // Display whale health on screen
+
+        g.setFont(new Font("Arial", Font.BOLD, 24));
+        g.drawString("Whale Health: " + whaleHealth, 20, 30);
+
+        g.dispose();
+        bufferStrategy.show();
+    }
 }

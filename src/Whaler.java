@@ -36,14 +36,14 @@ public class Whaler {
     //The move method.  Everytime this is run (or "called") the hero's x position and y position change by dx and dy
     public void move() {
 
-        if (xpos>=950){
+        if (xpos>=1000){
             xpos=2;
 
         }
         if (xpos<=0){
-            xpos=950;
+            xpos=999;
         }
-        if (ypos>=650){
+        if (ypos>=700){
             ypos=1;
 
         }
