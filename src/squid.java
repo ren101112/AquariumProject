@@ -36,11 +36,12 @@ public class squid {
     //The move method.  Everytime this is run (or "called") the hero's x position and y position change by dx and dy
     public void move() {
 
-        dy += dy + Math.sin(dx * 0.05) * 0.3;
+        dy += dy + Math.sin(dx * 0.05) * 0.3;//i used the math.sin to make it bob up and down, it took some trial and error to figure how to actually make it work
         xpos=xpos+dx;
-        hitbox= new Rectangle(xpos,ypos,width,height);
+        hitbox= new Rectangle(xpos,ypos,width,height);//it has a hitbox only because i copy and pasted the base of the class from the others
+        //the hitbox is never used
         ypos = ypos + dy+ (int)(Math.sin(xpos * -0.05) * 5);
-        ;
+
         hitbox= new Rectangle(xpos,ypos,width,height);
 
 

@@ -26,7 +26,7 @@ public class fish {  //VARIABLE DECLARATION SECTION
         xpos = pXpos;
         ypos = pYpos;
         dx =4;
-        dy =3;
+        dy =9;
         width = 100;
         height = 100;
         isAlive = true;

@@ -52,7 +52,7 @@ public class BasicGameApp implements Runnable {
     private Whaler whaleTeam;
     private fish goldfish;
     private squid giantSquid;
-    private int whaleHealth = 3;
+     int whaleHealth = 3;
 
 
    // Main method definition
@@ -79,7 +79,7 @@ public class BasicGameApp implements Runnable {
         whalersPic=Toolkit.getDefaultToolkit().getImage("whalers.png");
         whaleTeam=new Whaler(31,45);
         fishPic=Toolkit.getDefaultToolkit().getImage("fish.jpeg");
-        goldfish=new fish(132,45);
+        goldfish=new fish(500,600);
         squidPic= Toolkit.getDefaultToolkit().getImage("squid.jpeg");
         giantSquid =new squid(0,550);
 
