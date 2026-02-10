@@ -119,11 +119,11 @@ public class BasicGameApp implements Runnable {
         interactions();
 
 	}
-    public void interactions(){
+    public void interactions(){//interaction and method for interactions between objects
         if(whaleTeam.hitbox.intersects(whaled.hitbox2)){
             System.out.println("crash!!!!!!!!");
             whaleTeam.dx=-whaleTeam.dx;
-            whaled.dx=-whaled.dx;
+            whaled.dx=-whaled.dx;//whale bounces off whalers
             whaleTeam.dy=-whaleTeam.dy;
             whaled.dy=-whaled.dy;
 

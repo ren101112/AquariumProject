@@ -9,7 +9,7 @@ public class Whaler {
     public int width;
     public int height;
     public boolean isAlive;
-    public Rectangle hitbox;
+    public Rectangle hitbox;//creates a hitbox
     //a boolean to denote if the hero is alive or dead.
 
 
@@ -23,13 +23,13 @@ public class Whaler {
     // if you put in a String, an int and an int the program will use this constructor instead of the one above.
     public Whaler(int pXpos, int pYpos) {
         xpos = pXpos;
-        ypos = pYpos;
+        ypos = pYpos;//cha
         dx =1;
         dy =6;
         width = 150;
-        height = 100;
+        height = 100;//smaller than the whaler
         isAlive = true;
-        hitbox=new Rectangle(xpos,ypos,width,height);
+        hitbox=new Rectangle(xpos,ypos,width,height);//creates hitbox for the other things to hit
 
     } // constructor
 
@@ -51,7 +51,7 @@ public class Whaler {
             ypos=650;
         }
         xpos=xpos+dx;
-        hitbox= new Rectangle(xpos,ypos,width,height);
+        hitbox= new Rectangle(xpos,ypos,width,height);//hitbox
         ypos = ypos + dy;
         hitbox= new Rectangle(xpos,ypos,width,height);
 
