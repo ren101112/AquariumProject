@@ -56,12 +56,13 @@ public class fish {  //VARIABLE DECLARATION SECTION
             dy=-dy;
 
 
-        }
-        Hitbox3=new Rectangle(xpos,ypos,width,height);
+        }if( isAlive==true) {
+            Hitbox3 = new Rectangle(xpos, ypos, width, height);
 
-        xpos = xpos + dx;
-        Hitbox3=new Rectangle(xpos,ypos,width,height);
-        ypos = ypos + dy;
+            xpos = xpos + dx;
+            Hitbox3 = new Rectangle(xpos, ypos, width, height);
+            ypos = ypos + dy;
+        }
 
     }
 }

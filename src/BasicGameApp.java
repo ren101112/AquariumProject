@@ -52,7 +52,7 @@ public class BasicGameApp implements Runnable {
     private Whaler whaleTeam;
     private fish goldfish;
     private squid giantSquid;
-     int whaleHealth = 3;
+     int whaleHealth = 3;//whale heath int
 
 
    // Main method definition
@@ -73,10 +73,10 @@ public class BasicGameApp implements Runnable {
        
       //variable and objects
       //create (construct) the objects needed for the game and load up
-        background=Toolkit.getDefaultToolkit().getImage("northsea.jpg");
+        background=Toolkit.getDefaultToolkit().getImage("northsea.jpg");//loads sea background
 		whalePic = Toolkit.getDefaultToolkit().getImage("whale.png"); //load the picture
 		whaled = new Whale(699,100);
-        whalersPic=Toolkit.getDefaultToolkit().getImage("whalers.png");
+        whalersPic=Toolkit.getDefaultToolkit().getImage("whalers.png");//loads all of the characters
         whaleTeam=new Whaler(31,45);
         fishPic=Toolkit.getDefaultToolkit().getImage("fish.jpeg");
         goldfish=new fish(500,600);
@@ -116,7 +116,7 @@ public class BasicGameApp implements Runnable {
         whaleTeam.move();
         goldfish.move();
         giantSquid.move();
-        interactions();
+        interactions();//calls interactions
 
 	}
     public void interactions(){//interaction and method for interactions between objects
@@ -125,21 +125,26 @@ public class BasicGameApp implements Runnable {
             whaleTeam.dx=-whaleTeam.dx;
             whaled.dx=-whaled.dx;//whale bounces off whalers
             whaleTeam.dy=-whaleTeam.dy;
-            whaled.dy=-whaled.dy;
+            whaled.dy=-whaled.dy;//whale bounces off whalers
 
             // Decrease whale health instead of instant death
             whaleHealth=whaleHealth-1;
             System.out.println("Whale hit!!!!:( Health remaining: " + whaleHealth);
+            //detracts a life every time the whale is hit and changes its health
+
 
             // Check if whale is dead
             if(whaleHealth == 0){
                 whaled.isAlive=false;
-                System.out.println("Whale has died!");
+                System.out.println("Whale has died!");//announces the death of the whale if its lives go away
             }
         }
 
-        if(goldfish.Hitbox3.intersects(whaled.hitbox2)){
+        if(goldfish.Hitbox3.intersects(whaled.hitbox2)&&goldfish.isAlive==true){
             goldfish.isAlive=false;
+
+            whaleHealth=whaleHealth+1;
+            //simply says that if the goldfish hits the whale it dies and the whale gains a life
         }
     }
 
@@ -192,24 +197,28 @@ public class BasicGameApp implements Runnable {
         g.drawImage(background, 0,0, 1000, 700,null);
 
         // Draw the whale (only if alive)
-        if(whaled.isAlive) {
-            g.drawImage(whalePic, whaled.xpos, whaled.ypos, whaled.width, whaled.height, null);
+        if(whaled.isAlive==true) {
+            g.drawImage(whalePic, whaled.xpos, whaled.ypos, whaled.width, whaled.height, null);//draws whale IF IT IS ALIVE
         }
 
-        g.drawImage(whalersPic,whaleTeam.xpos,whaleTeam.ypos, whaleTeam.width,whaleTeam.height,null);
+        g.drawImage(whalersPic,whaleTeam.xpos,whaleTeam.ypos, whaleTeam.width,whaleTeam.height,null);//draws the whalers
 
         if(goldfish.isAlive==true) {
-            g.drawImage(fishPic, goldfish.xpos, goldfish.ypos, goldfish.width, goldfish.height, null);
+            g.drawImage(fishPic, goldfish.xpos, goldfish.ypos, goldfish.width, goldfish.height, null);//draws goldfish ONLY if its alive
         }
 
-        g.drawImage(squidPic,giantSquid.xpos,giantSquid.ypos, giantSquid.width,giantSquid.height,null);
+        g.drawImage(squidPic,giantSquid.xpos,giantSquid.ypos, giantSquid.width,giantSquid.height,null);//draws squid
 
         // Display whale health on screen
 
-        g.setFont(new Font("Arial", Font.BOLD, 24));
-        g.drawString("Whale Health: " + whaleHealth, 20, 30);
+        g.setColor(Color.RED);//colors the whale health text red
 
-        g.dispose();
+        g.setFont(new Font("Arial", Font.BOLD, 24));//draws the whale heath text on the screen in arial
+        g.drawString("Whale Health: " + whaleHealth, 20, 30);
+        g.drawRect(20,40,180,20);
+        g.fillRect(20,40,whaleHealth*60,20);
+
+        g.dispose();//do not add any code after dispose
         bufferStrategy.show();
     }
 }

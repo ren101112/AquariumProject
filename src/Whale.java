@@ -68,7 +68,7 @@ public class Whale {
         xpos = xpos + dx;
         hitbox2=new Rectangle(xpos,ypos,width,height);
         ypos = ypos + dy;
-        hitbox2=new Rectangle(xpos,ypos,width,height);
+        hitbox2=new Rectangle(xpos,ypos,width,height);//
  
     }
 }
