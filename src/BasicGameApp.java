@@ -140,7 +140,7 @@ public class BasicGameApp implements Runnable {
             }
         }
 
-        if(goldfish.Hitbox3.intersects(whaled.hitbox2)&&goldfish.isAlive==true){
+        if(goldfish.Hitbox3.intersects(whaled.hitbox2)&&goldfish.isAlive==true){//need to make sure that there is only a collision if the goldfish is alive
             goldfish.isAlive=false;
 
             whaleHealth=whaleHealth+1;

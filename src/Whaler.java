@@ -37,18 +37,18 @@ public class Whaler {
     public void move() {
 
         if (xpos>=1000){
-            xpos=2;
+            xpos=2;//makes the whaler wrap around each of the walls, for example this makes it go from right to left
 
         }
         if (xpos<=0){
-            xpos=999;
+            xpos=999;//right to left
         }
         if (ypos>=700){
-            ypos=1;
+            ypos=1;//bottom to top
 
         }
         if (ypos<=0){
-            ypos=650;
+            ypos=650;//top to bottom
         }
         xpos=xpos+dx;
         hitbox= new Rectangle(xpos,ypos,width,height);//hitbox

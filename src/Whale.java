@@ -28,15 +28,15 @@ public class Whale {
     //This is a SECOND constructor that takes 3 parameters.  This allows us to specify the hero's name and position when we build it.
     // if you put in a String, an int and an int the program will use this constructor instead of the one above.
     public Whale(int pXpos, int pYpos) {
-        name="bubba";
+        name="bubba";//never used but that is his name
         xpos = pXpos;
         ypos = pYpos;
         dx =4;
         dy =3;
-        width = 100;
-        height = 100;
-        isAlive = true;
-        hitbox2=new Rectangle(xpos,ypos,width,height);
+        width = 100;//100 pixels wide
+        height = 100;//100 tall
+        isAlive = true;//he is alive
+        hitbox2=new Rectangle(xpos,ypos,width,height);//creates a hitbox for the whale
  
     } // constructor
 
@@ -44,7 +44,7 @@ public class Whale {
     public void move() {
 
         if (xpos>=1000-width) {//the right wall
-            dx=-dx;
+            dx=-dx;//this makes him bounce off the right wall, and each is the following wall
 
 
 
@@ -66,7 +66,7 @@ public class Whale {
         }
 
         xpos = xpos + dx;
-        hitbox2=new Rectangle(xpos,ypos,width,height);
+        hitbox2=new Rectangle(xpos,ypos,width,height);//creates a hitbox object
         ypos = ypos + dy;
         hitbox2=new Rectangle(xpos,ypos,width,height);//
  
